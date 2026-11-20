@@ -84,7 +84,7 @@ collections:
         fields:
           - { label: "Small label", name: eyebrow, widget: string }
           - { label: "Headline", name: headline, widget: string, hint: "Put *stars* around the words shown in the accent colour." }
-          - { label: "Introduction", name: intro, widget: text, hint: "Wrap words in == to highlight them in gold, or in * for italics." }
+          - { label: "Introduction", name: intro, widget: text }
           - { label: "Now band", name: now, widget: list, field: { label: "Line", name: line, widget: string, hint: "Write it as: Label - text" } }
           - { label: "Why this place exists", name: manifesto, widget: text, hint: "Put ==two equals signs== around the words to highlight." }
           - { label: "Life Score title", name: measured_title, widget: string }

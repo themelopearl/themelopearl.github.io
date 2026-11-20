@@ -100,7 +100,7 @@ h2::after{content:"";display:block;width:56px;height:2px;background:var(--accent
 
 /* why this place exists */
 .manifesto{font-size:clamp(27px,3.8vw,42px);line-height:1.28;letter-spacing:-.01em;max-width:23em;margin-top:14px}
-.manifesto mark,.intro mark{background:linear-gradient(transparent 60%,rgba(233,196,106,.6) 60%);color:inherit;padding:0 .06em}
+.manifesto mark{background:linear-gradient(transparent 60%,rgba(233,196,106,.6) 60%);color:inherit;padding:0 .06em}
 .lead{font-size:19px;color:var(--ink-muted);margin-bottom:22px}
 
 /* my story, as a pearl */
