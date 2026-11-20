@@ -211,7 +211,7 @@ foreach ($dir in 'assets', 'admin') {
 }
 
 $homeMain = Fill (Get-Template 'home.html') @{
-  eyebrow = (Enc $homeData.eyebrow); headline = (Convert-Inline $homeData.headline); intro = (Enc $homeData.intro)
+  eyebrow = (Enc $homeData.eyebrow); headline = (Convert-Inline $homeData.headline); intro = (Convert-Inline $homeData.intro)
   now_band = $nowBand; manifesto = (Convert-Inline $homeData.manifesto); legend = $legend; rows = $rowsHome; more = $more
   layers = $(if ($chapterCards) { $chapterCards } else { $layerCards }); measured_title = (Enc $homeData.measured_title); measured_text = (Enc $homeData.measured_text)
   measured_more = $measuredMore; forwho_label = (Enc $homeData.forwho_label); forwho_title = (Enc $homeData.forwho_title); forwho_text = (Enc $homeData.forwho_text); invite = $invite
