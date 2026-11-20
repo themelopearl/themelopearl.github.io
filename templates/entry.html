@@ -1,0 +1,14 @@
+<article class="wrap letter-wrap">
+  <header class="letter-head">
+    <p class="label">Journal &middot; {{date}}</p>
+    <h1 class="letter-title">{{title}}</h1>
+    <p class="meta-line"><span>{{lang_label}}</span><span class="status"><i class="dot {{status}}"></i>{{status_label}}</span></p>
+  </header>
+  {{image}}
+  <div class="letter" lang="{{lang}}">
+{{body}}
+  </div>
+  <nav class="letter-nav" aria-label="More journal pages">{{prev}}{{next}}</nav>
+</article>
+
+{{invite}}

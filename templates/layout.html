@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:type" content="{{og_type}}">
+{{canonical}}
+<link rel="icon" href="/assets/img/pearl.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="{{site_name}}: journal" href="/feed.xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Instrument+Sans:wght@400;500;600&family=Lora:ital,wght@0,400;1,400&family=Gowun+Batang&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="wrap site-head">
+  <a class="name" href="/"><svg viewBox="0 0 20 20" aria-hidden="true"><circle class="f-must stk" cx="10" cy="10" r="7.5"/><circle class="f-paper" cx="7.6" cy="7.4" r="2"/></svg>{{site_name}}</a>
+  <nav class="nav" aria-label="Main">
+    <a href="/journal/"><span class="uline">Journal</span></a>
+    <a href="/about/"><span class="uline">My story</span></a>
+    <a href="/cv/"><span class="uline">CV</span></a>
+    <a href="#write-back"><span class="uline">Say hi</span></a>
+  </nav>
+</header>
+<main id="main">
+{{main}}
+</main>
+<footer class="foot">
+  <div class="wrap"><span>Made slowly, by hand, with the lamp on.</span><span>&copy; {{year}} {{site_name}} &middot; <a href="/feed.xml"><span class="uline">RSS</span></a></span></div>
+</footer>
+{{scripts}}
+</body>
+</html>

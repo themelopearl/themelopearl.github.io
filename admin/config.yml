@@ -1,0 +1,110 @@
+# Admin page for writing journal pages (Sveltia CMS).
+backend:
+  name: github
+  repo: Purliee/purliee.github.io
+  branch: main
+site_url: https://purliee.github.io
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: journal
+    label: Journal
+    label_singular: Journal page
+    description: Thoughts, stories and ordinary days, in any language.
+    folder: content/journal
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}}: {{title}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "Date", name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - label: "Language"
+        name: lang
+        widget: select
+        default: en
+        options:
+          - { label: "English", value: en }
+          - { label: "Монгол", value: mn }
+          - { label: "한국어", value: ko }
+      - label: "Status"
+        name: status
+        widget: select
+        default: seedling
+        options:
+          - { label: "Seedling (rough)", value: seedling }
+          - { label: "Growing (in progress)", value: growing }
+          - { label: "Evergreen (I stand by it)", value: evergreen }
+      - { label: "Opening line for lists", name: excerpt, widget: text, required: false, hint: "One or two sentences. Leave empty to use the first paragraph." }
+      - { label: "Picture (optional)", name: image, widget: image, required: false }
+      - { label: "Text", name: body, widget: markdown }
+
+  - name: chapters
+    label: My 20s chapters
+    label_singular: Chapter
+    folder: content/chapters
+    create: false
+    delete: false
+    summary: "{{number}}. {{title}}"
+    fields:
+      - { label: "Chapter name", name: title, widget: string }
+      - { label: "Number", name: number, widget: number }
+      - { label: "Years", name: years, widget: string }
+      - { label: "Ages", name: ages, widget: string }
+      - { label: "Headline", name: headline, widget: string }
+      - { label: "Summary for the card", name: summary, widget: text }
+      - { label: "Quote", name: quote, widget: string }
+      - { label: "Story", name: body, widget: markdown }
+
+  - name: pages
+    label: Pages
+    files:
+      - label: "My story"
+        name: about
+        file: content/pages/about.md
+        fields:
+          - { label: "Title", name: title, widget: string }
+          - { label: "Photo (optional)", name: photo, widget: image, required: false }
+          - { label: "Text", name: body, widget: markdown }
+      - label: "CV"
+        name: cv
+        file: content/pages/cv.md
+        fields:
+          - { label: "Title", name: title, widget: string }
+          - { label: "CV as PDF (optional)", name: pdf, widget: file, required: false }
+          - { label: "CV text", name: body, widget: markdown }
+
+  - name: settings
+    label: Settings
+    files:
+      - label: "Home page"
+        name: home
+        file: data/home.json
+        fields:
+          - { label: "Small label", name: eyebrow, widget: string }
+          - { label: "Headline", name: headline, widget: string, hint: "Put *stars* around the words shown in the accent colour." }
+          - { label: "Introduction", name: intro, widget: text }
+          - { label: "Now band", name: now, widget: list, field: { label: "Line", name: line, widget: string, hint: "Write it as: Label - text" } }
+          - { label: "Why this place exists", name: manifesto, widget: text, hint: "Put ==two equals signs== around the words to highlight." }
+          - { label: "Life Score title", name: measured_title, widget: string }
+          - { label: "Life Score text", name: measured_text, widget: text }
+          - { label: "Life Score link", name: measured_link, widget: string, required: false }
+          - { label: "Reader card: small label", name: forwho_label, widget: string }
+          - { label: "Reader card: title", name: forwho_title, widget: string }
+          - { label: "Reader card: text", name: forwho_text, widget: text }
+          - { label: "Invitation title", name: invite_title, widget: string }
+          - { label: "Invitation text (optional)", name: invite_text, widget: text, required: false }
+      - label: "Site and links"
+        name: site
+        file: data/site.json
+        fields:
+          - { label: "Name", name: name, widget: string }
+          - { label: "Tagline", name: tagline, widget: string }
+          - { label: "Description for search engines", name: description, widget: text }
+          - { label: "Site address", name: url, widget: string }
+          - { label: "Email for messages (leave empty to hide)", name: email, widget: string, required: false }
+          - { label: "Instagram link (leave empty to hide)", name: instagram, widget: string, required: false }
+          - { label: "Study-with-me Instagram link (leave empty to hide)", name: studywithme, widget: string, required: false }
+          - { label: "YouTube link (leave empty to hide)", name: youtube, widget: string, required: false }
+          - { label: "Newsletter sign-up link (leave empty to hide)", name: newsletter, widget: string, required: false }
