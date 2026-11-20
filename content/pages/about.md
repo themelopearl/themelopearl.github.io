@@ -11,3 +11,9 @@ Later, I did something a little strange. I gave every year of my twenties a scor
 That is what this place is about. The quiet years. The layers nobody claps for. The ordinary days that turn out to be the story.
 
 I'm serious about most things, except myself. If you'd rather have one deep conversation than a hundred small ones, pull up a chair. The lamp is on.
+
+## Why "the melo pearl"
+
+This corner of the internet lives at *themelopearl*. Melo pearls are among the rarest pearls on earth: golden orange, with a soft glow like a flame. Nobody has ever managed to farm them. Each one grows naturally, in its own time.
+
+That felt right.
