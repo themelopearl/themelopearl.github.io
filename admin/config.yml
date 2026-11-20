@@ -3,7 +3,7 @@ backend:
   name: github
   repo: themelopearl/themelopearl.github.io
   branch: main
-site_url: https://themelopearl.github.io
+site_url: https://themelopearl.com
 media_folder: assets/uploads
 public_folder: /assets/uploads
 
