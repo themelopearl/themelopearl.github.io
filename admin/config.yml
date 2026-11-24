@@ -55,7 +55,14 @@ collections:
       - { label: "Headline", name: headline, widget: string }
       - { label: "Summary for the card", name: summary, widget: text }
       - { label: "Quote", name: quote, widget: string }
-      - { label: "Story", name: body, widget: markdown }
+      - { label: "Story", name: body, widget: markdown, required: false, hint: "Leave empty to show 'Coming soon'." }
+      - { label: "Mongolian: chapter name", name: title_mn, widget: string, required: false }
+      - { label: "Mongolian: years", name: years_mn, widget: string, required: false }
+      - { label: "Mongolian: ages", name: ages_mn, widget: string, required: false }
+      - { label: "Mongolian: headline", name: headline_mn, widget: string, required: false }
+      - { label: "Mongolian: summary for the card", name: summary_mn, widget: text, required: false }
+      - { label: "Mongolian: quote", name: quote_mn, widget: string, required: false }
+      - { label: "Mongolian: story", name: story_mn, widget: markdown, required: false, hint: "Leave empty to show the English story on the Mongolian page." }
 
   - name: pages
     label: Pages
@@ -67,6 +74,12 @@ collections:
           - { label: "Title", name: title, widget: string }
           - { label: "Photo (optional)", name: photo, widget: image, required: false }
           - { label: "Text", name: body, widget: markdown }
+      - label: "My story (Mongolian)"
+        name: about_mn
+        file: content/pages/about.mn.md
+        fields:
+          - { label: "Title", name: title, widget: string }
+          - { label: "Text", name: body, widget: markdown, hint: "The photo comes from the English My story page." }
       - label: "CV"
         name: cv
         file: content/pages/cv.md
@@ -90,6 +103,23 @@ collections:
           - { label: "Life Score title", name: measured_title, widget: string }
           - { label: "Life Score text", name: measured_text, widget: text }
           - { label: "Life Score link", name: measured_link, widget: string, required: false }
+          - { label: "Reader card: small label", name: forwho_label, widget: string }
+          - { label: "Reader card: title", name: forwho_title, widget: string }
+          - { label: "Reader card: text", name: forwho_text, widget: text }
+          - { label: "Invitation title", name: invite_title, widget: string }
+          - { label: "Invitation text (optional)", name: invite_text, widget: text, required: false }
+      - label: "Home page (Mongolian)"
+        name: home_mn
+        file: data/home.mn.json
+        fields:
+          - { label: "Small label", name: eyebrow, widget: string }
+          - { label: "Headline", name: headline, widget: string, hint: "Put *stars* around the words shown in the accent colour." }
+          - { label: "Introduction", name: intro, widget: text }
+          - { label: "Now band", name: now, widget: list, field: { label: "Line", name: line, widget: string, hint: "Write it as: Label - text" } }
+          - { label: "Why this place exists", name: manifesto, widget: text, hint: "Put ==two equals signs== around the words to highlight." }
+          - { label: "Life Score title", name: measured_title, widget: string }
+          - { label: "Life Score text", name: measured_text, widget: text }
+          - { label: "Life Score link (optional)", name: measured_link, widget: string, required: false, hint: "Leave empty to use the link from the English home page." }
           - { label: "Reader card: small label", name: forwho_label, widget: string }
           - { label: "Reader card: title", name: forwho_title, widget: string }
           - { label: "Reader card: text", name: forwho_text, widget: text }

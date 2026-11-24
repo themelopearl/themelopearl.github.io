@@ -5,7 +5,7 @@
   --accent:#B2472F; --sage:#9DB596; --mustard:#E9C46A; --blush:#E8B4A0;
   --line:rgba(42,36,32,.14);
   --serif:"Newsreader","Lora","Gowun Batang",Georgia,serif;
-  --sans:"Instrument Sans",system-ui,sans-serif;
+  --sans:"Instrument Sans","Golos Text",system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
@@ -28,10 +28,16 @@ figure{margin:0}
 .ring-in{fill:none;stroke:var(--ink);stroke-opacity:.25;stroke-width:1}
 
 /* header */
-.site-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 28px;padding-block:28px}
-.name{display:inline-flex;align-items:center;gap:9px;font:600 18px/1 var(--sans)}
+.site-head{display:flex;align-items:center;flex-wrap:wrap;gap:12px 28px;padding-block:28px}
+.name{display:inline-flex;align-items:center;gap:9px;margin-right:auto;font:600 18px/1 var(--sans)}
 .name svg{width:18px;height:18px}
-.nav{display:flex;flex-wrap:wrap;gap:6px 26px;font:500 15px/1.6 var(--sans)}
+.nav{display:flex;flex-wrap:wrap;align-items:center;gap:6px 26px;font:500 15px/1.6 var(--sans)}
+/* language switch: EN | MN, the current one filled */
+.langs{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1.5px solid var(--ink);border-radius:999px;font:600 12px/1 var(--sans);letter-spacing:.08em}
+.langs>*{display:block;padding:6px 10px;border-radius:999px}
+.lang-cur{background:var(--ink);color:var(--paper)}
+.lang-alt{color:var(--ink-soft);transition:background-color .35s ease}
+.lang-alt:hover{background:var(--paper-dark)}
 .uline{background-image:linear-gradient(var(--accent),var(--accent));background-size:0% 2px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .4s ease;padding-bottom:3px}
 a:hover .uline,a:focus-visible .uline{background-size:100% 2px}
 
@@ -242,6 +248,15 @@ h2::after{content:"";display:block;width:56px;height:2px;background:var(--accent
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
 /* tablets and phones */
+@media (max-width:720px){
+  .nav{order:3;width:100%;gap:6px 20px}
+}
+@media (max-width:900px){
+  html[lang="mn"] .nav{order:3;width:100%;gap:6px 20px}
+}
+@media (max-width:440px){
+  html[lang="mn"] .nav{display:grid;grid-template-columns:auto auto;justify-content:start;gap:6px 32px}
+}
 @media (max-width:860px){
   .hero{grid-template-columns:1fr;padding-block:16px 56px}
   .art{max-width:280px;grid-row:1}

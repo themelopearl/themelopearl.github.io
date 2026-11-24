@@ -1,15 +1,15 @@
 <article class="wrap letter-wrap">
   <header class="letter-head">
-    <p class="label">My 20s &middot; Chapter {{number}} of {{total}} &middot; {{title}}</p>
+    <p class="label">{{chapter_label}}</p>
     <h1 class="letter-title">{{headline}}</h1>
     <p class="meta-line"><span>{{years}}</span><span>{{ages}}</span></p>
   </header>
   <blockquote class="chapter-quote">&ldquo;{{quote}}&rdquo;</blockquote>
-  <div class="letter">
+  <div class="letter" lang="{{body_lang}}">
 {{body}}
   </div>
-  <nav class="letter-nav" aria-label="Chapters">{{prev}}{{next}}</nav>
-  <p class="note"><a href="/about/#chapters"><span class="uline">All four chapters</span> &rarr;</a></p>
+  <nav class="letter-nav" aria-label="{{t:aria_chapters}}">{{prev}}{{next}}</nav>
+  <p class="note"><a href="{{p}}/about/#chapters"><span class="uline">{{t:all_chapters}}</span> &rarr;</a></p>
 </article>
 
 {{invite}}
