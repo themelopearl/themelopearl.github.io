@@ -301,22 +301,26 @@ function Get-ChaptersSection([string]$L) {
   if (-not $cards) { return '' }
   return ('<section class="wrap block" id="chapters"><div class="sec-head"><h2>' + (Enc (Get-Str $L 'chapters_heading')) + '</h2><span class="label">2015 &rarr; 2025</span></div><div class="layers">' + $cards + '</div></section>')
 }
-# EN | MN switch: the current language is marked, the other links to the same page.
+# Language toggle: one link to the same page in the other language. The knob sits
+# under the current language and slides across when clicked (see site.css).
 function Get-LangSwitch([string]$L, [string]$Path, [bool]$Single) {
   if ($Langs.Count -lt 2) { return '' }
-  $parts = foreach ($o in $Langs) {
-    $label = Enc (Get-Str $o 'lang_label')
-    if ($o -eq $L) {
-      '<span class="lang-cur" title="' + $langNames[$o] + '">' + $label + '</span>'
-    } else {
-      $href = $(if ($Single) { $Prefix[$o] + '/' } else { Get-Alt $Path $L $o })
-      '<a class="lang-alt" href="' + $href + '" hreflang="' + $o + '" lang="' + $o + '" title="' + $langNames[$o] + '">' + $label + '</a>'
-    }
-  }
-  return ('<div class="langs" role="group" aria-label="' + (Enc (Get-Str $L 'lang_switch_label')) + '">' + ($parts -join '') + '</div>')
+  $other = @($Langs | Where-Object { $_ -ne $L })[0]
+  $href = $(if ($Single) { $Prefix[$other] + '/' } else { Get-Alt $Path $L $other })
+  $opts = foreach ($o in $Langs) { '<span class="lt-opt' + $(if ($o -eq $L) { ' on' } else { '' }) + '" lang="' + $o + '">' + (Enc (Get-Str $o 'lang_label')) + '</span>' }
+  $at = $(if ([array]::IndexOf($Langs, $L) -gt 0) { ' at-2' } else { '' })
+  $label = Enc (Get-Str $other 'lang_switch_to')
+  return ('<a class="lang-toggle' + $at + '" href="' + $href + '" hreflang="' + $other + '" lang="' + $other + '" aria-label="' + $label + '" title="' + $label + '">' + ($opts -join '') + '<span class="lt-knob" aria-hidden="true"></span></a>')
 }
 
 $layout = Get-Template 'layout.html'
+# A short fingerprint of site.css, so browsers load the new styles right after an update.
+$cssFile = [IO.Path]::Combine($Root, 'assets', 'css', 'site.css')
+$cssV = '1'
+if ([IO.File]::Exists($cssFile)) {
+  $sha = [Security.Cryptography.SHA1]::Create()
+  $cssV = ([BitConverter]::ToString($sha.ComputeHash([IO.File]::ReadAllBytes($cssFile))) -replace '-', '').Substring(0, 10).ToLowerInvariant()
+}
 # Path: this page's address. Canon: the main address when the same text appears under
 # both interfaces (journal pages, the CV). Single: the page exists in one language only.
 function Get-Page([string]$L, [string]$Title, [string]$Desc, [string]$Main, [string]$Path, [string]$Type = 'website', [string]$Canon = '', [switch]$Single) {
@@ -332,7 +336,7 @@ function Get-Page([string]$L, [string]$Title, [string]$Desc, [string]$Main, [str
   $scripts = $(if ($Main.Contains('data-chart=')) { '<script src="/assets/js/life-score.js" defer></script><script src="/assets/js/charts.js" defer></script>' } else { '' })
   $page = $layout.Replace('{{main}}', $Main)
   $page = Fill $page @{ title = $Title; description = $Desc; canonical = $head; alternates = $alts; og_type = $Type; site_name = $siteName; year = $year
-    scripts = $scripts; lang = $L; p = $Prefix[$L]; lang_switch = (Get-LangSwitch $L $Path $Single.IsPresent) }
+    scripts = $scripts; lang = $L; p = $Prefix[$L]; css_v = $cssV; lang_switch = (Get-LangSwitch $L $Path $Single.IsPresent) }
   return (Set-Strings $page $L)
 }
 # Writes /mn/journal/ to _site/mn/journal/index.html.

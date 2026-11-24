@@ -1,7 +1,7 @@
 {
   "en": {
     "lang_label": "EN",
-    "lang_switch_label": "Language",
+    "lang_switch_to": "Read in English",
     "skip": "Skip to content",
     "nav_label": "Main",
     "nav_journal": "Journal",
@@ -54,7 +54,7 @@
   },
   "mn": {
     "lang_label": "Монгол",
-    "lang_switch_label": "Хэл",
+    "lang_switch_to": "Монгол хэлээр унших",
     "tagline": "Энгийн өдрүүдийн тэмдэглэл",
     "description": "Энгийн өдрүүдийн тэмдэглэл: нүднээс далд, нэг нэг давхаргаар өсөх тухай.",
     "skip": "Агуулга руу шилжих",

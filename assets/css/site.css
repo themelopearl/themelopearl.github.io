@@ -32,12 +32,19 @@ figure{margin:0}
 .name{display:inline-flex;align-items:center;gap:9px;margin-right:auto;font:600 18px/1 var(--sans)}
 .name svg{width:18px;height:18px}
 .nav{display:flex;flex-wrap:wrap;align-items:center;gap:6px 26px;font:500 15px/1.6 var(--sans)}
-/* language switch: EN | MN, the current one filled */
-.langs{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1.5px solid var(--ink);border-radius:999px;font:600 12px/1 var(--sans);letter-spacing:.08em}
-.langs>*{display:block;padding:6px 10px;border-radius:999px}
-.lang-cur{background:var(--ink);color:var(--paper)}
-.lang-alt{color:var(--ink-soft);transition:background-color .35s ease}
-.lang-alt:hover{background:var(--paper-dark)}
+/* language toggle: the dark knob sits under the current language and slides across on click */
+.lang-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;align-items:center;padding:3px;border:1.5px solid var(--ink);border-radius:999px;background:var(--paper-light);font:600 12px/1 var(--sans);letter-spacing:.06em}
+.lang-toggle:focus-visible{border-radius:999px}
+.lt-opt{position:relative;z-index:1;padding:7px 10px;text-align:center;color:var(--ink-muted);transition:color .3s ease}
+.lt-opt.on{color:var(--paper)}
+.lt-knob{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--ink);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.lang-toggle.at-2 .lt-knob{transform:translateX(100%)}
+.lang-toggle:hover .lt-knob{transform:translateX(7%)}
+.lang-toggle.at-2:hover .lt-knob{transform:translateX(93%)}
+.lang-toggle.flip .lt-knob{transform:translateX(100%)}
+.lang-toggle.at-2.flip .lt-knob{transform:translateX(0)}
+.lang-toggle.flip .lt-opt{color:var(--paper)}
+.lang-toggle.flip .lt-opt.on{color:var(--ink-muted)}
 .uline{background-image:linear-gradient(var(--accent),var(--accent));background-size:0% 2px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .4s ease;padding-bottom:3px}
 a:hover .uline,a:focus-visible .uline{background-size:100% 2px}
 
@@ -255,6 +262,7 @@ h2::after{content:"";display:block;width:56px;height:2px;background:var(--accent
   html[lang="mn"] .nav{order:3;width:100%;gap:6px 20px}
 }
 @media (max-width:440px){
+  .site-head{column-gap:16px}
   html[lang="mn"] .nav{display:grid;grid-template-columns:auto auto;justify-content:start;gap:6px 32px}
 }
 @media (max-width:860px){
